@@ -1,6 +1,6 @@
 module IFastSum
 
-export iFastSum
+export iFastSum, iFastSumSorted
 
 #=
    follows the algorithms as given in
@@ -97,5 +97,14 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
     end
 end
 
+
+function iFastSumSorted{T<:AbstractFloat}(v::Vector{T})
+   s = sort(v)
+   n = reverse(filter(signbit,s))
+   p = filter(x->x>=zero(T), s)
+   sn = iFastSum(n)
+   sp = iFastSum(p)
+   sn+sp
+end
 
 end # module
