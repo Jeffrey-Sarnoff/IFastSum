@@ -1,5 +1,7 @@
 module IFastSum
 
+export iFastSum
+
 #=
    follows the algorithms as given in
    "Some Highly Accurate Basic Linear Algebra Subroutines"
@@ -23,7 +25,7 @@ function iFastSum{T<:Real}(x::Array{T,1})
     iFastSumAlgorithm(xs, n)
 end
 
-@inline function AddTwo{T<:Real}(a::T, b::T)
+@inline function eftAdd{T<:Real}(a::T, b::T)
     x = a+b
     z = x-a
     y = (a-(x-z))+(b-z)
@@ -50,7 +52,7 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
     s = zero(T); loop = 1; # loop counts the number of loops
 
     for i in 1:n # accumlate first approximation
-        s,x[i] = AddTwo(s, x[i])
+        s,x[i] = eftAdd(s, x[i])
     end
 
     # main loop
@@ -61,7 +63,7 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
         # st is the temporary sum
         # (2)
         for i in 1:n
-            st,x[count] = AddTwo(st,x[i]) # x[count] is local error
+            st,x[count] = eftAdd(st,x[i]) # x[count] is local error
             if x[count] != zero(T)
                 count += 1
                 sm = max(sm,abs(st))
@@ -84,12 +86,12 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
             if rc > 0
                 return s # return s if it is a recursive call
             end
-            w1, e1 = AddTwo(st, em)
-            w2, e2 = AddTwo(st, -em)
+            w1, e1 = eftAdd(st, em)
+            w2, e2 = eftAdd(st, -em)
             if ((w1+s != s) | (w2+s != s)) || (Round3(s,w1,e1) != s) || (Round3(s,w2,e2) != s)
                 re=1
                 s1 = iFastSum(x,n) # first recursive call
-                s,s1 = AddTwo(s,s1)
+                s,s1 = eftAdd(s,s1)
                 s2 = iFastSum(x,n) # second recursive call
                 re = 0
                 s = Round3(s,s1,s2)
@@ -98,7 +100,6 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
         end
     end
 end
-
 
 
 end # module
