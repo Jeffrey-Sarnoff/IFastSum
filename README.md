@@ -11,7 +11,7 @@ I have introduced two minor changes:
 ```julia
 using IFastSum
 
-v = rand(10_000)
+v = rand(9_876_543)
 s = iFastSum(v)  # if !isinf(s) then s is the correctly rounded sum
 
 ```
