@@ -15,3 +15,6 @@ v = rand(9_876_543)
 s = iFastSum(v)  # if !isinf(s) then s is the correctly rounded sum
 
 ```
+
+### Performance
+I benchmark iFastSum(v) 30x faster than sum(b) # b=[BigFloat(x) for x in v] with setprecision(120 or 256)
