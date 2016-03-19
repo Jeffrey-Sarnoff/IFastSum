@@ -78,7 +78,7 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
         # each local error <= HalfUlp(sm)
         # em is the weak upper bound on magnitude of the sum of the errors
         #
-        s, st = AddTwo(s,st)
+        s, st = eftAdd(s,st)
         st = x[count]
         n = count
         #
