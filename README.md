@@ -4,7 +4,7 @@ Correctly rounded floating point summation for arbitrary length vectors that do 
 This implements IFastSum from "Some Highly Accurate Basic Linear Algebra Subroutines" by Yuhang Zhao (c) 2010.  
 I have introduced two minor changes:  
 
-       If the intermediate summand overflow, NaN is returned (Zhao's version terminates on overflow).  
+       If the intermediate summand overflow, Inf is returned (Zhao's version terminates on overflow).  
        Round3 is reimplemented using reinterpret; this is somewhat faster than Zhao's Round3.  
 
 ### Use
@@ -12,6 +12,6 @@ I have introduced two minor changes:
 using IFastSum
 
 v = rand(10_000)
-s = iFastSum(v)  # if !isnan(s) then s is the correctly rounded sum
+s = iFastSum(v)  # if !isinf(s) then s is the correctly rounded sum
 
 ```
