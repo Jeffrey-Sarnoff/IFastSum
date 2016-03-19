@@ -70,10 +70,6 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
             end
         end
         #
-        if nxs != count        # catch intermediate overflow
-            return((T)(NaN)) 
-        end
-        # 
         em = (count-1)*eps(sm)*0.5
         # each local error <= HalfUlp(sm)
         # em is the weak upper bound on magnitude of the sum of the errors
