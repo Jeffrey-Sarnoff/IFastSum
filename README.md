@@ -19,3 +19,6 @@ s = iFastSum(v)  # if !isinf(s) then s is the correctly rounded sum
 ### Performance
 I benchmark iFastSum(v) 30x faster than sum(b)   
 where b=[BigFloat(x) for x in v] using setprecision(120 or 256)
+
+### Note
+In the event of overflow, you might try iFastSum(sort(v)).
