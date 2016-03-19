@@ -7,3 +7,11 @@ I have introduced two minor changes:
        If the intermediate summand overflow, NaN is returned (Zhao's version terminates on overflow).  
        Round3 is reimplemented using reinterpret; this is somewhat faster than Zhao's Round3.  
 
+### Use
+```julia
+using IFastSum
+
+v = rand(10_000)
+s = iFastSum(v)  # if !isnan(s) then s is the correctly rounded sum
+
+```
