@@ -1,6 +1,6 @@
 module IFastSum
 
-export iFastSum, iFastSumSorted
+export iFastSum, iFastSumSorted, lessthanMag
 
 #=
    follows the algorithms as given in
