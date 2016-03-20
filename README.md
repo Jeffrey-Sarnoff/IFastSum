@@ -21,5 +21,5 @@ I benchmark iFastSum(v) 30x faster than sum(b)
 where b=[BigFloat(x) for x in v] using setprecision(120 or 256)
 
 ### Note
-In the event of overflow, you can try iFastSumSorted(v) which is at least faithfully rounded  
-  and is resistant to intermediate overflow.
+In the event of overflow, you can use iFastSum(sort(v,lt=lessthanMag))  
+  which is not going to overflow spuriously, but runs 10x slower than iFastSum.
