@@ -46,9 +46,6 @@ end
 # for initial call, n is length of x
 function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
     global rc
-    
-    nxs = length(x) # used to catch overflow
-    
     s = zero(T); loop = 1; # loop counts the number of loops
 
     for i in 1:n # accumlate first approximation
