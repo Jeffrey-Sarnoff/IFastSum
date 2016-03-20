@@ -66,16 +66,16 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
                 sm = max(sm,abs(st))
             end
         end
-        #
+
         em = (count-1)*eps(sm)*0.5
         # each local error <= HalfUlp(sm)
         # em is the weak upper bound on magnitude of the sum of the errors
-        #
+        
         s, st = eftAdd(s,st)
         st = x[count]
         n = count
         #
-        if (em==zero(T) || em < eps(s)*0.5)
+        if ((em==zero(T)) | (em < eps(s)*0.5))
             if rc > 0
                 return s # return s if it is a recursive call
             end
