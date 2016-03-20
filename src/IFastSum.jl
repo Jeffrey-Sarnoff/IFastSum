@@ -94,14 +94,11 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
     end
 end
 
+lessthanMag{T}(x::T,y::T) = abs(x)<abs(y)
 
 function iFastSumSorted{T<:AbstractFloat}(v::Vector{T})
-   s = sort(v)
-   n = reverse(filter(signbit,s))
-   p = filter(x->x>=zero(T), s)
-   sn = iFastSum(n)
-   sp = iFastSum(p)
-   sn+sp
+   s = sort(v, lt=lessthanMag)
+   iFastSum(s)
 end
 
 end # module
