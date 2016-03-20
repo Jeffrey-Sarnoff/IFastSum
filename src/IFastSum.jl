@@ -85,7 +85,7 @@ function iFastSumAlgorithm{T<:Real}(x::Array{T,1},n::Int)
             w1, e1 = eftAdd(st, em)
             w2, e2 = eftAdd(st, -em)
             if ((w1+s != s) | (w2+s != s)) || (Round3(s,w1,e1) != s) || (Round3(s,w2,e2) != s)
-                re=1
+                re = 1
                 s1 = iFastSum(x,n) # first recursive call
                 s,s1 = eftAdd(s,s1)
                 s2 = iFastSum(x,n) # second recursive call
