@@ -1,6 +1,8 @@
 ## IFastSum.jl
 Correctly rounded floating point summation for arbitrary length vectors that do not overflow.  
-
+```ruby
+                                                              Jeffrey Sarnoff © 2016-Mar-22 at New York
+```
 This implements IFastSum from "Some Highly Accurate Basic Linear Algebra Subroutines" by Yuhang Zhao (c) 2010.  
 I have introduced two minor changes:  
 
