@@ -1,4 +1,4 @@
-## IFastSum.jl
+## IFastSum
 Correctly rounded floating point summation for arbitrary length vectors that do not overflow.  
 ```ruby
                                                               Jeffrey Sarnoff © 2016-Mar-22 at New York
